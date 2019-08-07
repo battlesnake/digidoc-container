@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+
+  main:
+    build: main
+    user: notroot
+    volumes:
+     - ${HOME}:/home/notroot/ext
+     - /tmp/.X11-unix:/tmp/.X11-unix
+     - ${HOME}/.Xauthority:/home/notroot/.Xauthority
+     - ${XDG_RUNTIME_DIR}:/run/xdg-runtime-dir
+     - /dev/bus/usb:/dev/bus/usb
+     - /run/udev:/run/udev:ro
+    privileged: true
+    environment:
+     - DISPLAY
+     - PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
+     - XDG_RUNTIME_DIR=/run/xdg-runtime-dir
+    restart: "no"
+    network_mode: "host"
+    command: bash -c 'pcscd -fd & qdigidoc4'
+    working_dir: /home/notroot/ext/
