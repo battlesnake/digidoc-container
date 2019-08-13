@@ -18,4 +18,8 @@ run useradd -u 1000 -g 1000 -m notroot
 
 run chmod +777 /var/run
 
+copy start.sh /
+
 user notroot
+
+cmd ["/start.sh"]
