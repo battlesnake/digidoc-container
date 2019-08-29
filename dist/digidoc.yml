@@ -1,0 +1,18 @@
+version: '2'
+services:
+  main:
+    image: markkc/digidoc
+    user: notroot
+    volumes:
+     - ${HOME}:/home/notroot/ext
+     - /tmp/.X11-unix:/tmp/.X11-unix
+     - ${HOME}/.Xauthority:/home/notroot/.Xauthority
+     - ${XDG_RUNTIME_DIR}:/run/xdg-runtime-dir
+     - /dev/bus/usb:/dev/bus/usb
+     - /run/udev:/run/udev:ro
+    environment:
+     - DISPLAY
+     - XDG_RUNTIME_DIR=/run/xdg-runtime-dir
+    privileged: true
+    restart: "no"
+    network_mode: "host"

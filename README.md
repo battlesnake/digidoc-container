@@ -1,3 +1,9 @@
+Note
+====
+
+See `dist/README.md` for info about how to run the pre-built image from Docker Hub.
+The instructions here will build the image locally.
+
 To start
 ========
 
