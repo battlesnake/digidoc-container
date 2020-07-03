@@ -1,7 +1,13 @@
-from ubuntu:cosmic
+from ubuntu:focal
+
+env DEBIAN_FRONTEND=noninteractive
+env LANG=en_GB.UTF-8
+env LC_ALL=en_GB.UTF-8
+env TZ=Europe/Tallinn
+run ln -fs /usr/share/zoneinfo/Europe/Tallinn /etc/localtime
 
 run apt update
-run apt install -y wget lsb-release gnupg build-essential sudo
+run apt install -y wget lsb-release gnupg build-essential sudo firefox
 
 run echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
@@ -22,4 +28,4 @@ copy start.sh /
 
 user notroot
 
-cmd ["/start.sh"]
+entrypoint ["/start.sh"]
