@@ -13,7 +13,7 @@ To start
 
 ```
 # Note that this runs the container in privileged mode
-docker-compose --build up
+docker-compose up --build
 ```
 
 4. Go through DigiDoc intro screens, wait for it to connect to PCSCD and detect ID card (shown in top of DigiDoc).
