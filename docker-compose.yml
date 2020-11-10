@@ -4,7 +4,6 @@ services:
 
   main:
     build: main
-    user: notroot
     volumes:
      - ${HOME}:/home/notroot/ext
      - /tmp/.X11-unix:/tmp/.X11-unix
@@ -16,5 +15,6 @@ services:
     environment:
      - DISPLAY
      - XDG_RUNTIME_DIR=/run/xdg-runtime-dir
+     - UID=${UID}
     restart: "no"
     network_mode: "host"
