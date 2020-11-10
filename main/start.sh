@@ -14,7 +14,7 @@ if [ -z "${1:-}" ]; then
 	set digidoc
 fi
 
-groupadd -g "${GID:-1000}" notroot
+groupadd -g "${GID:-1000}" notroot || true
 useradd -u "${UID:-1000}" -g "${GID:-1000}" -m notroot
 
 cd /home/notroot/ext/
