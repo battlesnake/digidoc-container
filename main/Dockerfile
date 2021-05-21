@@ -13,11 +13,14 @@ run echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 run wget -O - https://installer.id.ee/media/install-scripts/install-open-eid.sh \
 	| sed -e '/^test_root$/d' \
-	| sed -e 's/chrome-token-signing-policy//' \
+	| sed -e 's/^read -p "Would you like to activate Chrome.*$/policy=n/' \
 	| sed -e 's/apt-get install /apt-get install -y /' \
 	| bash -x
 
 run chmod +777 /var/run
+
+run mkdir -p /home/notroot/.digidocpp
+run mkdir -p /home/notroot/ext
 
 copy start.sh /
 
