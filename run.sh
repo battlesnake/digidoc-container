@@ -25,7 +25,7 @@ if ! touch -c /dev/bus/usb/001/001 &>/dev/null; then
 fi
 
 if (( err )); then
-    read -n 1-p 'Continue anyway? ' yn
+    read -n 1 -p 'Continue anyway? ' yn
     echo ''
     if [ "$yn" != y ]; then
         echo 'Aborting due to errors'
