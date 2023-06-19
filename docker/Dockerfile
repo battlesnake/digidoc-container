@@ -11,12 +11,18 @@ run apt install -y wget lsb-release gnupg build-essential sudo firefox
 
 run echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+run ln -s /bin/true /systemctl
+run ln -s /bin/env /sudo
+env PATH /:${PATH}
 run wget -O - https://installer.id.ee/media/install-scripts/install-open-eid.sh \
 	| sed -e '/^test_root$/d' \
 	| sed -e 's/chrome-token-signing-policy//' \
 	| sed -e 's/apt-get install /apt-get install -y /' \
 	| sed -e 's/read -p /read <<<n -p /' \
 	| bash -x
+env PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
+run rm /systemctl
+run rm /sudo
 
 # run env SUDO_FORCE_REMOVE=yes apt remove -y sudo
 
